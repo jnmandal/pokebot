@@ -2,7 +2,7 @@
 A JRuby Robot that moves back and forth, notices when it's in a battle with a wild pokemon, and battles that pokemon. Great for level grinding!
 
 #Dependencies
-This depends pretty heavily on ![rTesseract](https://github.com/dannnylo/rtesseract), which it uses to parse text form a screenshotted image and determine whether or not you are in a battle, setup for it is as follows:
+This depends pretty heavily on [rTesseract](https://github.com/dannnylo/rtesseract), which it uses to parse text form a screenshotted image and determine whether or not you are in a battle, setup for it is as follows:
    
     gem install rtesseract
 
