@@ -1,5 +1,5 @@
 require 'java'
-require 'rtesseract'
+# require 'rtesseract'
 
 java_import 'java.awt.event.KeyEvent'
 java_import 'java.awt.Robot'
@@ -21,6 +21,14 @@ class Pokebot < Robot
       sleep(0.2)
     end
   end
+  def fish
+    while true
+      self.simulate_key(KeyEvent::VK_F3, 0.5)
+      sleep(0.2)
+      self.simulate_key(KeyEvent::VK_X, 0.5)
+      sleep(0.2)
+    end
+  end
   def robo_screenshot
     # currently not working
     capture = r.createScreenCapture(r.screenRect)
@@ -35,7 +43,11 @@ class Pokebot < Robot
   end
 end
 
-# tesseract testing
-p image = RTesseract.new("test.png", processor: "quick_magick", lang: "eng")
-p image.to_s.include?("appeared")
+# require 'tesseract'
 
+# e = Tesseract::Engine.new {|e|
+#   e.language  = :eng
+#   e.blacklist = '|'
+# }
+
+# e.text_for('test/first.png').strip # => 'ABC'
