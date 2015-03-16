@@ -14,12 +14,10 @@ class Pokebot < Robot
     key_release(ev)
   end
   def left_right
-    while true
-      self.simulate_key(KeyEvent::VK_LEFT, 0.5)
-      sleep(0.2)
-      self.simulate_key(KeyEvent::VK_RIGHT, 0.5)
-      sleep(0.2)
-    end
+    self.simulate_key(KeyEvent::VK_LEFT, 0.5)
+    sleep(0.2)
+    self.simulate_key(KeyEvent::VK_RIGHT, 0.5)
+    sleep(0.2)
   end
   def fish
     while true
@@ -41,13 +39,25 @@ class Pokebot < Robot
     self.simulate_key(VK_OPEN_BRACKET, 0.5)
     sleep(0.2)
   end
+  def battle
+    self.simulate_key(KeyEvent::VK_X, 0.5)
+    sleep(0.2)
+    self.simulate_key(KeyEvent::VK_X, 0.5)
+    sleep(0.2)
+    self.poke_screenshot
+    #Send it to the OCR to check if the pokemon has fainted
+  end
 end
 
-# require 'tesseract'
+trainer = Pokebot.new
 
-# e = Tesseract::Engine.new {|e|
-#   e.language  = :eng
-#   e.blacklist = '|'
-# }
-
-# e.text_for('test/first.png').strip # => 'ABC'
+while true
+  #Move Left then Right
+  trainer.left_right
+  #Take a screenshot
+  trainer.poke_screenshot
+  #Send the screenshot to tesseract
+  #If response is 1 then enter battle
+  trainer.battle
+  #If response is 0 then repeat
+end

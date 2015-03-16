@@ -6,3 +6,12 @@
 * natural language methods
   -> ie: pokebot.patrol_until_capture("Pinsir")
   -> pokebot.fly_to("Pallet Town")
+
+
+
+#Flow of the App
+* Move back and forth in the grass
+* After one full rotation (back and forth) take a screenshot
+* Check that screenshot for "appeared"
+* If appeared battle (use the first moveslot move)
+* Once the battle ends repeat
